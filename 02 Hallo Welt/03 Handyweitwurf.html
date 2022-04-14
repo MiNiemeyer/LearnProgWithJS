@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Handyweitwurf</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <h1>Fange das Monster</h1>
+    <script>
+      var g = 9.81;
+      var v0;
+      var winkel;
+      var bogenmaß;
+      var wurfweite;
+      var entfernungZumMonster = Math.random() * 90 + 10;
+      entfernungZumMonster = Math.round(entfernungZumMonster);
+      alert("Das Monster ist " + entfernungZumMonster +" Meter entfernt");
+
+      for (i = 1; i <= 3; i++) {
+        v0 = prompt("Gib die Anfangsgeschwindigkeit ein", "v0");
+        winkel = prompt("Gib den Wurfwinkel ein", "zwischen 1 und 90");
+        bogenmaß = winkel * (Math.PI / 180);
+        wurfweite = (v0 ** 2 * Math.sin(2 * bogenmaß)) / g;
+        wurfweite = Math.round(wurfweite);
+        alert("Deine Wurfweite ist " +wurfweite + " Meter");
+        if (entfernungZumMonster == wurfweite) {
+          alert("Du hast das Monster getroffen");
+          i = 3;
+        } else {
+          alert("Daneben");
+        }
+      } 
+    </script>
+  </body>
+</html>
