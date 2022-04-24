@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zahlenraten</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script>
+        var oberGrenze = 100;
+      var ausgedachteZahl = Math.random();
+      ausgedachteZahl = ausgedachteZahl * oberGrenze;
+      ausgedachteZahl = Math.round(ausgedachteZahl + 0.5);
+      var anzahlVersuche = 0;
+      var gerateneZahl =0;
+
+      while (ausgedachteZahl != gerateneZahl) {
+        gerateneZahl = prompt("Rate bitte", "Eine Zahl bis " + oberGrenze);
+
+        if (gerateneZahl > ausgedachteZahl) {
+          alert("Deine geratene Zahl ist zu hoch");
+        }
+        if (gerateneZahl < ausgedachteZahl) {
+          alert("Deine geratene Zahl ist zu niedrig");
+        }
+        anzahlVersuche = anzahlVersuche + 1;
+
+        if (gerateneZahl == ausgedachteZahl) {
+          alert("Richtig geraten!");
+        }
+      }
+      alert("Du hast " + anzahlVersuche +" Versuche benötigt");
+    </script>
+  </body>
+</html>
