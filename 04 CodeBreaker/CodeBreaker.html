@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CodeBreaker</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <h1>CodeBreaker</h1>
+    <p>
+      Dies ist das Trainingsprogramm für Geheimagenten. Es bereitet dich auf
+      deine Einsätze vor und bring dir bei, Geheimcodes zu entschlüssseln.
+    </p>
+    <p >Git dein Bestes, um den geheimnisvollen Mr. JS zu besiegen!</p>
+    <div onclick="codeBreaker()"> 
+      <p style="font-size: 42pt;color: black;text-shadow: red 0.0em 0.0em 0.1em;">CodeBreaker...&#127875</p> 
+    </div>
+
+    <script>
+      function zufall(){
+        var zahl  = Math.round(Math.random() * 9 + 0.5);
+        return zahl;
+      }
+      function codeBreaker() {
+        var zahl1 = zufall();
+
+        var zahl2;
+        var zahl3;
+        var meinVersuch;
+        var anzahlVersuche = 0;
+        var maxVersuche = 20;
+        alert("CodeBreaker das ultimative Spiel für Denker!");
+        
+        do {
+          zahl2 = zufall();
+        } while (zahl2 == zahl1);        
+        
+        do {
+          zahl3 = zufall();
+        } while (zahl3 == zahl1 || zahl3 == zahl2);
+        do {
+          var richtigeStellen = 0;
+          var richtigeZahl = 0;
+          anzahlVersuche++;
+          meinVersuch = prompt(
+            "Gib deinen " + anzahlVersuche + ". Tipp ab",
+            "eine Zahl von 111 bis 999"
+          );
+  
+          var tip1 = meinVersuch.charAt(0);
+          var tip2 = meinVersuch.charAt(1);
+          var tip3 = meinVersuch.charAt(2);
+          console.log(meinVersuch + ":" + tip1 + "-" + tip2 + "-" + tip3);
+          if (tip1 == zahl1) richtigeZahl++;
+          else if (tip1 == zahl2 || tip1 == zahl3) richtigeStellen++;
+          if (tip2 == zahl2) richtigeZahl++;
+          else if (tip2 == zahl1 || tip2 == zahl3) richtigeStellen++;
+          if (tip3 == zahl3) richtigeZahl++;
+          else if (tip3 == zahl1 || tip3 == zahl2) richtigeStellen++;
+  
+          alert(
+            richtigeZahl +
+              " Zahlen sind richtig\n" +
+              richtigeStellen +
+              " Zahlen an der falschen Stelle"
+          );
+          var abbruch = meinVersuch >= 111 || meinVersuch <= 999;
+        } while (
+          richtigeZahl < 3 &&
+          anzahlVersuche < maxVersuche &&
+          meinVersuch >= 111 &&
+          meinVersuch <= 999
+        );
+        if (richtigeZahl == 3) {
+          alert(
+            "Du hast den Code nach " + anzahlVersuche + " Versuchen geknackt!"
+          );
+        } else if (abbruch) {
+          alert("Du hast nach " + anzahlVersuche + " Versuchen aufgegeben!!");
+        } else {
+          alert(
+            "Du hast den Code leider nach " +
+              maxVersuche +
+              " Versuchen nicht geknackt!\nDer gesuchte Code war " +
+              zahl1 +
+              zahl2 +
+              zahl3
+          );
+        }
+      }
+    </script>
+  </body>
+</html>

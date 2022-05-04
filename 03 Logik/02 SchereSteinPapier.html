@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Schere Stein Papier</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script>
+      var auswahlComputer;
+      var auswahlSpieler;
+      var punkteComputer = 0;
+      var punkteSpieler = 0;
+      var anzahlRunden = 0;
+      var gewinnBedingung = 4;
+      var nameSpieler;
+
+      nameSpieler = prompt("Hallo, wie ist Dein Name?");
+      do {
+        // Computer wählt;
+        auswahlComputer = Math.random() * 3;
+        auswahlComputer = Math.round(auswahlComputer + 0.5);
+        if (auswahlComputer == 1) {auswahlComputer = "Schere";}
+        if (auswahlComputer == 2) {auswahlComputer = "Stein"; }
+        if (auswahlComputer == 3) {auswahlComputer = "Papier";}
+        // Spieler wählt
+        auswahlSpieler = prompt(nameSpieler + " bitte wähle", "1 = Schere 2 = Stein 3 = Papier");
+
+        if (auswahlSpieler == 1) {auswahlSpieler = "Schere";}
+        if (auswahlSpieler == 2) {auswahlSpieler = "Stein";}
+        if (auswahlSpieler == 3) {auswahlSpieler = "Papier";}
+
+        alert(
+          "Computer: " +
+            auswahlComputer +
+            " / " +
+            nameSpieler +
+            " : " +
+            auswahlSpieler
+        );
+
+        if (auswahlComputer == auswahlSpieler) {
+          alert("Beide haben " + auswahlComputer + " gewählt - Unentschieden");
+        }
+        if (auswahlComputer == "Schere" && auswahlSpieler == "Papier") {
+          alert("Schere schneidet Papier - Computer gewinnt");
+          punkteComputer++;
+        }
+        if (auswahlComputer == "Papier" && auswahlSpieler == "Stein") {
+          alert("Papier wickelt Stein - Computer gewinnt");
+          punkteComputer++;
+        }
+        if (auswahlComputer == "Stein" && auswahlSpieler == "Schere") {
+          alert("Stein schleift Schere - Computer gewinnt");
+          punkteComputer++;
+        }
+        if (auswahlSpieler == "Schere" && auswahlComputer == "Papier") {
+          alert("Schere schneidet Papier - " + nameSpieler + " gewinnt");
+          punkteSpieler++;
+        }
+        if (auswahlSpieler == "Papier" && auswahlComputer == "Stein") {
+          alert("Papier wickelt Stein -  " + nameSpieler + " gewinnt");
+          punkteSpieler++;
+        }
+        if (auswahlSpieler == "Stein" && auswahlComputer == "Schere") {
+          alert("Stein schleift Schere -  " + nameSpieler + " gewinnt");
+          punkteSpieler++;
+        }
+        anzahlRunden++;
+
+        if (punkteComputer == punkteSpieler) {
+          alert(
+            "Unentschieden " +
+              punkteComputer +
+              " zu " +
+              punkteSpieler +
+              " nach " +
+              anzahlRunden +
+              " Runden."
+          );
+        } else if (punkteComputer > punkteSpieler) {
+          alert(
+            "Nach " +
+              anzahlRunden +
+              " Runde(n) führt der Computer mit " +
+              punkteComputer +
+              " zu " +
+              punkteSpieler +
+              " Punkten."
+          );
+        } else {
+          alert(
+            nameSpieler +
+              " führt nach " +
+              anzahlRunden +
+              " Runden mit " +
+              punkteSpieler +
+              " zu " +
+              punkteComputer +
+              "."
+          );
+        }
+      } while (
+        punkteComputer < gewinnBedingung &&
+        punkteSpieler < gewinnBedingung
+      );
+      if (punkteSpieler >= gewinnBedingung) {
+        alert("Herzlichen Glückwunsch. Du hast gewonnen!");
+      } else {
+        alert("Der Computer war leider besser und gewinnt");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test-Script-Zufallszahl</title>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <script>
+            var lowest = 1;
+            var highest = 9;
+            var countHigher =0;
+            var countLower =0;
+            var countOk =0;
+            var randomNumber =0;
+
+
+            for (let i = 0; i <  1000000; i++) {
+                randomNumber = Math.round(Math.random() * highest +0.5);
+                if(randomNumber < lowest){
+                    countLower++;
+                }else if(randomNumber >highest){
+                    countHigher++;
+                }else{
+                    countOk++;
+                }
+            }
+            document.write("<h3> Niedriger: " +countLower +"\n" +"Höher: " +countHigher +"\n" + "OK: " +countOk +"\n" +"</h3>");
+            
+        </script>
+    </body>
+
+</html>

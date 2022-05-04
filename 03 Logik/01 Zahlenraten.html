@@ -6,14 +6,17 @@
   </head>
   <body>
     <script>
-        var oberGrenze = 100;
-      var ausgedachteZahl = Math.random();
+      var ausgedachteZahl;
+      var oberGrenze = 100;
+      var anzahlVersuche = 0;
+      var gerateneZahl = 0;
+      
+      // Der Computer denkt sich eine Zufallszahl aus
+      ausgedachteZahl = Math.random();
       ausgedachteZahl = ausgedachteZahl * oberGrenze;
       ausgedachteZahl = Math.round(ausgedachteZahl + 0.5);
-      var anzahlVersuche = 0;
-      var gerateneZahl =0;
-
-      while (ausgedachteZahl != gerateneZahl) {
+      
+      do {
         gerateneZahl = prompt("Rate bitte", "Eine Zahl bis " + oberGrenze);
 
         if (gerateneZahl > ausgedachteZahl) {
@@ -24,11 +27,16 @@
         }
         anzahlVersuche = anzahlVersuche + 1;
 
-        if (gerateneZahl == ausgedachteZahl) {
-          alert("Richtig geraten!");
-        }
+      } while (ausgedachteZahl != gerateneZahl && anzahlVersuche <= 10);
+      
+      if (gerateneZahl == ausgedachteZahl) {
+        alert("Richtig geraten!");
       }
-      alert("Du hast " + anzahlVersuche +" Versuche benötigt");
+      else{
+        alert("Du hast es leider nicht geschafft.")
+      }
+      
+      alert("Du hast " + anzahlVersuche + " Versuche benötigt");
     </script>
   </body>
 </html>
