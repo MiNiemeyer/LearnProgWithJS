@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Arrays</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div onclick="showAll()">
+      <p>Alle Anzeigen</p>
+    </div>
+
+    <div onclick="delShift()">
+      <p>Am Ende löschen mit Shift</p>
+    </div>
+    <div onclick="delPull()">
+      <p>Am Anfang löschen</p>
+    </div>
+    <div onclick="addElement()">
+      <p>Spieler hinzufügen</p>
+    </div>
+
+    <script>
+      var dieManschaft = new Array("");
+      
+      var name;
+      dieManschaft.pu
+
+      function addElement() {
+        // Wert am Ende hinzufügen
+        var anzahlElemente;
+        anzahlElemente = dieManschaft.push(prompt("Spielername","Gibt einen neuen Spieler ein."))
+      }
+
+      function delShift() {
+        // Wert am Ende löschen
+        name = dieManschaft.shift();
+        alert(name +" gelöscht.");
+      }
+
+      function delPull() {
+        // Wert am Anfang löschen
+        name = dieManschaft.
+        alert(name +" gelöscht.");
+      }
+      function showAll() {
+        dieManschaft.forEach((element) => {
+          console.log(element);
+        });
+      }
+    </script>
+  </body>
+</html>
