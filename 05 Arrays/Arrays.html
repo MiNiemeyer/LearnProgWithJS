@@ -10,10 +10,10 @@
     </div>
 
     <div onclick="delShift()">
-      <p>Am Ende löschen mit Shift</p>
+      <p>Am Anfang löschen mit Shift</p>
     </div>
-    <div onclick="delPull()">
-      <p>Am Anfang löschen</p>
+    <div onclick="delPop()">
+      <p>Am Ende löschen mit Pop</p>
     </div>
     <div onclick="addElement()">
       <p>Spieler hinzufügen</p>
@@ -23,23 +23,23 @@
       var dieManschaft = new Array("");
       
       var name;
-      dieManschaft.pu
+      
 
       function addElement() {
         // Wert am Ende hinzufügen
         var anzahlElemente;
-        anzahlElemente = dieManschaft.push(prompt("Spielername","Gibt einen neuen Spieler ein."))
+        anzahlElemente = dieManschaft.push(prompt("Spielername","Gibt einen neuen Spieler ein."));
       }
 
       function delShift() {
-        // Wert am Ende löschen
+        // Wert am Anfang löschen
         name = dieManschaft.shift();
         alert(name +" gelöscht.");
       }
 
-      function delPull() {
-        // Wert am Anfang löschen
-        name = dieManschaft.
+      function delPop() {
+        // Wert am Ende löschen
+        name = dieManschaft.pop();
         alert(name +" gelöscht.");
       }
       function showAll() {

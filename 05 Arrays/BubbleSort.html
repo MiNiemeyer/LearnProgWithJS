@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BubleSort</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div onclick="bubbleSort()">
+      <p>BubleSort</p>
+    </div>
+    <p id="notiz">Manschaftsaufstellung: <br /></p>
+  </body>
+  <script>
+    var manschaft = new Array(
+      "Xaver",
+      "Hans",
+      "Darth Berti",
+      "Helge",
+      "Bärbel",
+      "Andrea"
+    );
+    var gegner = new Array(
+      "Hotte",
+      "Alois",
+      "Alva",
+      "Petra",
+      "Chen Lu",
+      "Peter"
+    );
+    notiz.innerHTML = notiz.innerHTML + "<br>" + "Manschaft" + "<br>";
+    notiz.innerHTML = notiz.innerHTML + "<br>" + manschaft;
+    setTimeout(() => {
+      bubbleSort(manschaft);
+    }, 2000);
+    notiz.innerHTML = notiz.innerHTML + "<br><br>" + "Gegner" + "<br>";
+    notiz.innerHTML = notiz.innerHTML + "<br>" + gegner;
+    setTimeout(() => {
+      bubbleSort(gegner);
+    }, 2000);
+    function bubbleSort(liste) {
+      do {
+        var geändert = false;
+        for (let index = 0; index < liste.length - 1; index++) {
+          if (liste[index] > liste[index + 1]) {
+            var gemerkt;
+            gemerkt = liste[index];
+            liste[index] = liste[index + 1];
+            liste[index + 1] = gemerkt;
+            geändert = true;
+            notiz.innerHTML = notiz.innerHTML + "<br>" + liste;
+          }
+        }
+      } while (!geändert);
+
+      return liste;
+    }
+  </script>
+</html>
