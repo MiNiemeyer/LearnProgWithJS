@@ -8,18 +8,26 @@
     <div onclick="bubbleSort()">
       <p>BubleSort</p>
     </div>
-    <p id="notiz">Manschaftsaufstellung: <br /></p>
+    <p id="lblManschaft"></p>
+    <p id="lblGegner"></p>
+    <p>Mannschaft sortiert:</p>
+    <p id="manschaftsaufstellung"></p>
+    <p>Gegner sortiert:</p>
+    <p id="gegneraufstellung"></p>
   </body>
   <script>
+    var timeout = 2000;
     var manschaft = new Array(
       "Xaver",
       "Hans",
-      "Darth Berti",
+      "Darth",
+      "Berti",
       "Helge",
       "Bärbel",
       "Andrea"
     );
     var gegner = new Array(
+      "Zottel",
       "Hotte",
       "Alois",
       "Alva",
@@ -27,30 +35,31 @@
       "Chen Lu",
       "Peter"
     );
-    notiz.innerHTML = notiz.innerHTML + "<br>" + "Manschaft" + "<br>";
-    notiz.innerHTML = notiz.innerHTML + "<br>" + manschaft;
-    setTimeout(() => {
-      bubbleSort(manschaft);
-    }, 2000);
-    notiz.innerHTML = notiz.innerHTML + "<br><br>" + "Gegner" + "<br>";
-    notiz.innerHTML = notiz.innerHTML + "<br>" + gegner;
-    setTimeout(() => {
-      bubbleSort(gegner);
-    }, 2000);
-    function bubbleSort(liste) {
-      do {
-        var geändert = false;
-        for (let index = 0; index < liste.length - 1; index++) {
-          if (liste[index] > liste[index + 1]) {
-            var gemerkt;
-            gemerkt = liste[index];
-            liste[index] = liste[index + 1];
-            liste[index + 1] = gemerkt;
-            geändert = true;
-            notiz.innerHTML = notiz.innerHTML + "<br>" + liste;
-          }
+    lblManschaft.innerHTML = "Manschaft unsortiert:" + "<br>" + manschaft + "<br>";
+    bubbleSort(manschaft,0,false,"manschaftsaufstellung");
+    lblGegner.innerHTML = "Gegner unsortiert:" + "<br>" + gegner + "<br>";
+    bubbleSort(gegner,0,false,"gegneraufstellung");    
+    function bubbleSort(liste, position, geandert, element) {
+      for (let index = position; index < liste.length - 1; index++) {
+        if (liste[index] > liste[index + 1]) {
+          var gemerkt;
+          gemerkt = liste[index];
+          liste[index] = liste[index + 1];
+          liste[index + 1] = gemerkt;
+          geandert = true;
+          document.getElementById(element).innerHTML =  liste;
+          setTimeout(() => {
+            bubbleSort(liste, index, geandert,element);
+          }, timeout);
+          return;
         }
-      } while (!geändert);
+        if(geandert){
+          setTimeout(() => {
+            bubbleSort(liste,0,false,element);
+          }, timeout);
+        }
+
+      }
 
       return liste;
     }
